@@ -1,0 +1,7 @@
+{
+  "name": "JokeService(19)",
+  "version": "1.0.0",
+  "dependencies": {
+    "mongoose": "^5.7.7"
+  }
+}
