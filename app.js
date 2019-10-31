@@ -13,6 +13,7 @@ app.use(morgan('tiny'));
 // MONGODB & MONGOOSE SETUP
 const mongoose = require('mongoose');
 mongoose.Promise = Promise;
+// TODO: Lav mongo database og indsæt i strengen herunder
 mongoose.connect(config.localMongoDB + '//*jokeDB*/', {useNewUrlParser: true, useUnifiedTopology: true});
 
 // ROUTES FOR THE APP
