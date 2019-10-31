@@ -14,7 +14,7 @@ app.use(morgan('tiny'));
 const mongoose = require('mongoose');
 mongoose.Promise = Promise;
 // TODO: Lav mongo database og indsæt i strengen herunder
-mongoose.connect(config.localMongoDB + '//*jokeDB*/', {useNewUrlParser: true, useUnifiedTopology: true});
+//mongoose.connect(config.localMongoDB + '//*jokeDB*/', {useNewUrlParser: true, useUnifiedTopology: true});
 
 // ROUTES FOR THE APP
 const jokeRouter = require('./routes/joke');
