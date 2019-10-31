@@ -10,4 +10,4 @@ joke.methods.toString = function() {
     return this.setup + " " + this.punchline;
 };
 
-//module.exports = mongoose.model('Joke', joke);
+module.exports = mongoose.model('Joke', joke);
