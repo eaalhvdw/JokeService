@@ -1,7 +1,8 @@
-<li>
-    <label>Jokes</label><p>
+<table>
     {{#each jokes}}
-        {{setup}} ({{punchline}}<br/>
+        <tr>
+            <td>{{this.setup}}</td>
+            <td>{{this.punchline}}</td>
+        </tr>
     {{/each}}
-    </p>
-</li>
+</table>

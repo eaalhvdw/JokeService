@@ -18,5 +18,12 @@ exports.getJoke = function(jokeId) {
 
 // Returns a promise that resolves with an array of all jokes
 exports.getJokes = function() {
-    return Joke.find().exec(); // Is this right?
+    const jokes = [
+        {setup: 'Where does the king keep his armies?', punchline: 'In his sleeves!'},
+        {setup: 'foo', punchline: 'bar'},
+        {setup: 'a', punchline: 'b'},
+        {setup: '&&', punchline: '||'}
+    ];
+    return jokes;
+    //return Joke.find().exec();
 };

@@ -1,47 +1,29 @@
-setOnClicks();
-update();
+const controller = require('../controllers/jokesApiController')
 
-function update() {
-    document.querySelector('#showJokes').innerHTML = '';
-    //document.querySelector('#showOtherJokes').innerHTML = '';
-    for (let input of document.querySelectorAll('input')) input.value = '';
-
-    getJokes();
+/**
+ * @return {string}
+ */
+async function GETtext(url) {
+    const OK = 200;
+    let response = await fetch(url);
+    if (response.status !== OK)
+        throw new Error("GET status code " + response.status);
+    return await response.text();
 }
 
-async function getJokes() {
-    const [template, jokeResponse] = await Promise.all([fetch('/joke.hbs')]);
-    const [templateText, jokes] = await Promise.all([template.text(), jokeResponse.json()]);
-    const compiledTemplate = Handlebars.compile(templateText);
-    let jokeHTML = '';
-    jokes.forEach(joke => {
-        jokeHTML += compiledTemplate({
-            setup: joke.setup,
-            punchline: joke.punchline
-        });
-    });
-    document.querySelector('#showJokes').innerHTML = jokeHTML;
+async function generateJokesTable(jokes) {
+    let template = await GETtext('/joke.hbs');
+    let compiledTemplate = Handlebars.compile(template);
+    return compiledTemplate({jokes}); // {jokes: jokes}
 }
 
-function setOnClicks() {
-    document.querySelector('#submitJoke').onclick = () => {
-        const msg = {
-            setup: document.querySelector('#jokeSetup').value,
-            punchline: document.querySelector('#jokePunchline').value,
-        };
-        fetch('/joke', {
-            method: "POST",
-            body: JSON.stringify(msg),
-            headers: {'Content-Type': 'application/json'}
-        })
-            .then(response => {
-                if (response.status >= 400)
-                    throw new Error(response.status);
-                else
-                    update();
-                return response.json();
-            })
-            .then(result => console.log(`Resultat: %o`, result))
-            .catch(err => console.log('Fejl: ' + err));
-    };
+async function main() {
+    try {
+        let jokes = await controller.getJokes();
+        document.body.innerHTML = await generateJokesTable(jokes);
+    } catch (e) {
+        console.log(e.name + ": " + e.message);
+    }
 }
+
+main();

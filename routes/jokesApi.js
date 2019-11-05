@@ -4,16 +4,17 @@ const router = express.Router();
 
 router
     .get('/api/jokes', (req, res) => {
-        //TODO: Vis egne jokes
-        controller.getJokes()
-            .then(val => res.json(val))
-            .catch(err => {
-                console.log(err);
-                res.status(500).send(err);
-            });
+        // Vis egne jokes
+        const jokes = [
+            {setup: 'Where does the king keep his armies?', punchline: 'In his sleeves!'},
+            {setup: 'foo', punchline: 'bar'},
+            {setup: 'a', punchline: 'b'},
+            {setup: '&&', punchline: '||'}
+        ];
+        res.send(jokes);
     })
     .get('/api/othersites', (req, res) => {
-        //TODO: Vis liste over andre services
+        //TODO: Vis liste over andre joke services
     })
     .get('/api/othersites/:site', (req, res) => {
         //TODO: Vis jokes fra den valgte service
