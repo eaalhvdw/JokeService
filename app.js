@@ -25,4 +25,4 @@ const port = process.env.PORT || config.localPort;
 app.listen(port);
 console.log('Listening on port ' + port + '...');
 
-module.exports = app; // pga. tests?
+module.exports = app; // pga. tests
