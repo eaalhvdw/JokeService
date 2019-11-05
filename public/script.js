@@ -1,5 +1,3 @@
-const Handlebars = require("mongoose/lib/helpers/document/compile");
-
 setOnClicks();
 update();
 
