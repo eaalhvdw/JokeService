@@ -17,7 +17,7 @@ mongoose.Promise = Promise;
 //mongoose.connect(config.localMongoDB + '//*jokeDB*/', {useNewUrlParser: true, useUnifiedTopology: true});
 
 // ROUTES FOR THE APP
-const jokeRouter = require('./routes/joke');
+const jokeRouter = require('./routes/jokesApi');
 app.use('/joke', jokeRouter);
 
 // START SERVER
