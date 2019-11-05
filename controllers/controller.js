@@ -18,5 +18,5 @@ exports.getJoke = function(jokeId) {
 
 // Returns a promise that resolves with an array of all jokes
 exports.getJokes = function() {
-    return Joke.find().exec();                                              // Is this right?
+    return Joke.find().populate('joke').exec();                                              // Is this right?
 };
