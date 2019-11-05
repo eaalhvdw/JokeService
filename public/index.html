@@ -3,10 +3,49 @@
 <head>
     <meta charset="UTF-8">
     <title>JokeService2019</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.1/css/bootstrap-select.min.css">
     <link rel="stylesheet" href="style.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.1/js/bootstrap-select.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/handlebarsjs/4.0.5/handlebars.min.js"></script>
     <script src="script.js" defer></script>
 </head>
 <body>
-    <h1>Hello world!</h1>
+<div class="container">
+    <h1>Joke Service</h1>
+    <ul class="nav nav-tabs">
+        <li class="active"><a data-toggle="tab" href="#ownJokes">Jokes</a></li>
+        <li><a data-toggle="tab" href="#addJoke">Add joke</a></li>
+        <li><a data-toggle="tab" href="#otherJokes">Other jokes</a></li>
+    </ul>
+
+    <div class="tab-content">
+        <!--Tab for jokes-->
+        <div id="ownJokes" class="tab-pane fade in active">
+            <h3>Jokes</h3>
+            <ol id="showJokes"></ol>
+        </div>
+
+        <!--Tab for add joke-->
+        <div id="addJoke" class="tab-pane fade">
+            <h3>Add Joke</h3>
+                <label>Setup</label>
+                <input class="form-control" type="text" name="setup" id="setup">
+                <label>Punchline</label><br>
+                <input class="form-control" type="text" name="punchline" id="punchline"><br/>
+                <button type="button" class="btn btn-default" id="submitJoke">Create</button>
+        </div>
+
+        <!--Tab for other jokes-->
+        <div id="otherJokes" class="tab-pane fade in active">
+            <h3>Jokes</h3>
+            <ol id="showOtherJokes"></ol>
+        </div>
+
+    </div>
+</div>
 </body>
 </html>
