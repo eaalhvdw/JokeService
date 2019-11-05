@@ -4,13 +4,13 @@ const router = express.Router();
 
 router
     .get('/api/services', (req, res) => {
-        //TODO
+        controller.getRegistryJokes(req, res);
     })
     .post('api/services', (req, res) => {
-        //TODO
+        controller.postJokeService(req, res);
     })
     .delete('api/services', (req, res) => {
-        //TODO
+        controller.deleteJokeService(req, res);
     });
 
 module.exports = router;
