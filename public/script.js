@@ -1,4 +1,4 @@
-const controller = require('../controllers/jokesApiController')
+const controller = require('../controllers/jokesApiController');
 
 /**
  * @return {string}

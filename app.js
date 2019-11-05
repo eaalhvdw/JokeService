@@ -22,7 +22,6 @@ const jokeRouter = require('./routes/jokesApi');
 app.use('/', jokeRouter);
 
 // START SERVER
-
 app.get('/', (req, res) => {
     try {
         let jokes = controller.getJokes();
