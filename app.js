@@ -18,7 +18,9 @@ mongoose.Promise = Promise;
 
 // ROUTES FOR THE APP
 const jokeRouter = require('./routes/jokesApi');
+const registryRouter = require('./routes/registryApi');
 app.use('/', jokeRouter);
+app.use('/', registryRouter);
 
 // START SERVER
 
