@@ -8,13 +8,21 @@ const router = express.Router();
 router
     .get('/api/jokes', (req, res) => {
         // Show own jokes (through force for the second time).
-        controller.getJokes()
+        const jokes = [
+            {setup: 'Where does the king keep his armies?', punchline: 'In his sleeves!'},
+            {setup: 'foo', punchline: 'bar'},
+            {setup: 'a', punchline: 'b'},
+            {setup: '&&', punchline: '||'}
+        ];
+        res.send(jokes);
+       /* controller.getJokes()
             .then(val => res.json(val))
             .catch(err => {
                 console.error("Error: " + err);
                 if(err.stack) console.error(err.stack);
                 res.status(500).send(err);
             });
+       */
     })
     .get('/api/othersites', (req, res) => {
         //TODO: Show list of other jokeservices.

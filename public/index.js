@@ -1,9 +1,5 @@
-const controller = require('../controllers/jokesApiController');
-const controller2 = require('../controllers/registryApiController');
 /**
- * I have no idea what's going on in this function,
- * but we are using it in the next function, so I
- * guess we need it for now.
+ *
  * @return {string}
  */
 async function GETtext(url) {
@@ -12,6 +8,20 @@ async function GETtext(url) {
     if (response.status !== OK)
         throw new Error("GET status code " + response.status);
     return await response.text();
+}
+
+/**
+ * GET endpoint.
+ * @param url
+ * @returns {Promise<*>}
+ * @constructor
+ */
+async function GET(url) {
+    const OK = 200;
+    let response = await fetch(url);
+    if (response.status !== OK)
+        throw new Error("GET status code " + response.status);
+    return await response.json();
 }
 
 /**
@@ -39,29 +49,30 @@ async function generateJokeserviceTable(jokeServices){
 
 /**
  * This function is trying to send our jokes from the database* to the browser.
- * *Right now we are just getting the jokes from the controller because nothing works yet.
+ * *Right now we are just getting the jokes from the jokesController because nothing works yet.
  *  (Including this.)
  * @returns {Promise<void>}
  */
 async function main() {
     try {
-        let jokes = await controller.getJokes();
+        let jokes = await GET('/api/jokes');
 
         let jokesDiv = document.getElementById('ourJokes');
-        let h2 = jokesDiv.firstElementChild;
+        let h = jokesDiv.firstElementChild;
         let jokesTable = await generateJokesTable(jokes);
         jokesTable.parentElement = jokesDiv;
         document.appendChild(jokesTable);
-        document.body.insertBefore(h2, jokesTable);
+        document.body.insertBefore(h, jokesTable);
 
-        let jokeServices = await controller2.getRegistryJokes();
+        let jokeServices = await GET('/api/jokes');
         let otherDiv = document.getElementById('otherJokes');
-        let h = otherDiv.firstElementChild;
+        let h2 = otherDiv.firstElementChild;
         let jokeserviceTable = await generateJokesTable(jokes);
         jokeserviceTable.parentElement = otherDiv;
         document.appendChild(jokeserviceTable);
-        document.body.insertBefore(h, jokeserviceTable);
+        document.body.insertBefore(h2, jokeserviceTable);
         document.body.innerHTML = await generateJokeserviceTable(jokeServices);
+
     } catch (e) {
         console.log(e.name + ": " + e.message);
     }

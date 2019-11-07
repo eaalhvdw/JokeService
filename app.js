@@ -17,14 +17,27 @@ mongoose.Promise = Promise;
 //mongoose.connect(config.localMongoDB + '/JokeService2019DB', {useNewUrlParser: true, useUnifiedTopology: true});
 
 // ROUTES FOR THE APP
-const jokeRouter = require('./routes/jokesApi');
+/*const jokeRouter = require('./routes/jokesApi');
 const registryRouter = require('./routes/registryApi');
 app.use('/', jokeRouter);
 app.use('/', registryRouter);
+*/
 
 // START SERVER
+app.get('/', (req, res) => {
+        // Show own jokes (through force for the second time).
+        const jokes = [
+            {setup: 'Where does the king keep his armies?', punchline: 'In his sleeves!'},
+            {setup: 'foo', punchline: 'bar'},
+            {setup: 'a', punchline: 'b'},
+            {setup: '&&', punchline: '||'}
+        ];
+        res.send(jokes);
+    }).listen(8080);
+console.log('Listening on port 8080...');
 
 /*Trying to force the jokes through the server - and failing*/
+/*
 app.get('/', (req, res) => {
     try {
         let jokes = controller.getJokes();
@@ -47,4 +60,4 @@ app.listen(port);
 console.log('Listening on port ' + port + '...');
 */
 
-module.exports = app; // pga. tests
+//module.exports = app; // pga. tests

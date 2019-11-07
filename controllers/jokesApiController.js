@@ -27,16 +27,16 @@ exports.getJoke = function(jokeId) {
 
 /**
  * Returns a promise that resolves with an array of all jokes.
- * @returns {*[]}
+ * @returns {Promise<*[]>}
  */
 exports.getJokes = function() {
-    //Forcing the jokes through the server (see app.js and script.js).
+    //Forcing the jokes through the server (see app.js and index.js).
     const jokes = [
         {setup: 'Where does the king keep his armies?', punchline: 'In his sleeves!'},
         {setup: 'foo', punchline: 'bar'},
         {setup: 'a', punchline: 'b'},
         {setup: '&&', punchline: '||'}
     ];
-    return jokes;
+    return Promise.resolve(jokes);
     //return Joke.find().exec();
 };
