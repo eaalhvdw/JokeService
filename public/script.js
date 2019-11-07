@@ -25,6 +25,12 @@ async function generateJokesTable(jokes) {
     return compiledTemplate({jokes}); // {jokes: jokes}
 }
 
+async function generateJokeserviceTable(jokeServices){
+    let temp = await GETtext('/jokeServiceList.hbs');
+    let compiledTemp = Handlebars.compile(temp);
+    return compiledTemp({jokeServices});
+}
+
 /**
  * This function is trying to send our jokes from the database* to the browser.
  * *Right now we are just getting the jokes from the controller because nothing works yet.
