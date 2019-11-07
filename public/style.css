@@ -1,3 +1,56 @@
-table {
-    border: 2px black;
+body {
+    background-color: aliceblue;
+}
+
+h1 {
+    text-align: center;
+}
+
+.container {
+    text-align: center;
+
+    display: grid;
+    grid-template-columns: 30% 40% 30%;
+    grid-auto-flow: column;
+    gap: 2px;
+}
+
+#ourJokes, #addJoke, #otherJokes {
+    background-color: lavender;
+    padding: 20px;
+}
+
+#addJoke {
+    display: grid;
+    grid-area: 1/1/1/1;      /*  startRow/startColumn/endRow/endColumn  */
+    gap: 8px;
+}
+
+#add {
+    grid-area: 1/1/1/6;      /*  startRow/startColumn/endRow/endColumn  */
+}
+
+#setup, #punchline {
+    text-align: left;
+
+    display: grid;
+    grid-template-columns: 40% 60%;
+    grid-auto-flow: column;
+}
+
+#setup {
+    grid-area: 2/1/2/5;      /*  startRow/startColumn/endRow/endColumn  */
+}
+
+#punchline {
+    grid-area: 3/1/3/5;      /*  startRow/startColumn/endRow/endColumn  */
+}
+
+#button {
+    grid-area: 2/5/4/5;      /*  startRow/startColumn/endRow/endColumn  */
+}
+
+button {
+    height: 50px;
+    width: 80px;
 }

@@ -1,7 +1,7 @@
 "use strict";
 
 // INITIALIZATION
-const controller = require('./controllers/jokesApiController'); //Midlertidigt
+const controller = require('./controllers/jokesApiController');
 const express = require('express');
 const morgan = require('morgan');
 const config = require('./config');
@@ -14,8 +14,7 @@ app.use(morgan('tiny'));
 // MONGODB & MONGOOSE SETUP
 const mongoose = require('mongoose');
 mongoose.Promise = Promise;
-// TODO: Lav mongo database og indsæt i strengen herunder
-//mongoose.connect(config.localMongoDB + '//*jokeDB*/', {useNewUrlParser: true, useUnifiedTopology: true});
+//mongoose.connect(config.localMongoDB + '/JokeService2019DB', {useNewUrlParser: true, useUnifiedTopology: true});
 
 // ROUTES FOR THE APP
 const jokeRouter = require('./routes/jokesApi');
@@ -23,6 +22,7 @@ app.use('/', jokeRouter);
 
 // START SERVER
 
+/*Trying to force the jokes through the server - and failing*/
 app.get('/', (req, res) => {
     try {
         let jokes = controller.getJokes();

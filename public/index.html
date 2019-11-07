@@ -9,5 +9,32 @@
 </head>
 <body>
     <h1>Joke Service</h1>
+    <div class="container">
+        <div id="ourJokes">
+            <h2>Jokes</h2>
+            <!-- table containing our jokes (joke.hbs) -->
+        </div>
+        <!-- The design of contents in #addJoke is not responsive - we may consider to rewire these contents -->
+        <div id="addJoke">
+            <div id="add">
+                <h2>Add joke</h2>
+            </div>
+            <div id="setup">
+                <label id="setupLbl">Setup</label>
+                <input type="text" placeholder="Type setup here" id ="setupInp">
+            </div>
+            <div id="punchline">
+                <label id="punchLbl">Punchline</label>
+            <input type="text" placeholder="Type punchline here" id="punchInp">
+            </div>
+            <div id="button">
+                <button type="button">Create</button>
+            </div>
+        </div>
+        <div id="otherJokes">
+            <h2>Other jokes</h2>
+            <!-- list with links to other joke services - not implemented yet (to be generated with handlebars) -->
+        </div>
+    </div>
 </body>
 </html>
