@@ -30,7 +30,7 @@ exports.getJoke = function(jokeId) {
  * @returns {Promise<*[]>}
  */
 exports.getJokes = function() {
-    //Forcing the jokes through the server (see app.js and index.js).
+    //Hardcoded jokes
     const jokes = [
         {setup: 'Where does the king keep his armies?', punchline: 'In his sleeves!'},
         {setup: 'foo', punchline: 'bar'},

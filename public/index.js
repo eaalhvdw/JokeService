@@ -1,12 +1,12 @@
 /**
- *
+ * Help method
  * @return {string}
  */
 async function GETtext(url) {
     const OK = 200;
     let response = await fetch(url);
     if (response.status !== OK)
-        throw new Error("GET status code " + response.status);
+        throw new Error('GET status code ' + response.status);
     return await response.text();
 }
 
@@ -20,7 +20,7 @@ async function GET(url) {
     const OK = 200;
     let response = await fetch(url);
     if (response.status !== OK)
-        throw new Error("GET status code " + response.status);
+        throw new Error('GET status code ' + response.status);
     return await response.json();
 }
 
@@ -73,8 +73,8 @@ async function main() {
         document.body.insertBefore(h2, jokeserviceTable);
         document.body.innerHTML = await generateJokeserviceTable(jokeServices);
 
-    } catch (e) {
-        console.log(e.name + ": " + e.message);
+    } catch (error) {
+        console.error('index.js:77 - ' + error.name + ': ' + error.message);
     }
 }
 

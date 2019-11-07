@@ -2,15 +2,13 @@ body {
     background-color: aliceblue;
 }
 
-h1 {
+h1, h2 {
     text-align: center;
 }
 
 .container {
-    text-align: center;
-
     display: grid;
-    grid-template-columns: 30% 40% 30%;
+    grid-template-columns: 20% 5% 50% 25%;
     grid-auto-flow: column;
     gap: 2px;
 }
@@ -22,35 +20,44 @@ h1 {
 
 #addJoke {
     display: grid;
-    grid-area: 1/1/1/1;      /*  startRow/startColumn/endRow/endColumn  */
+    grid-area: 1/1/4/3;         /*  startRow/startColumn/endRow/endColumn  */
     gap: 8px;
 }
 
-#add {
-    grid-area: 1/1/1/6;      /*  startRow/startColumn/endRow/endColumn  */
+#addJoke>h2 {
+    text-align: center;
+
+    grid-area: 1/1/1/3;         /*  startRow/startColumn/endRow/endColumn  */
 }
 
-#setup, #punchline {
+#setupLbl {
     text-align: left;
 
-    display: grid;
-    grid-template-columns: 40% 60%;
-    grid-auto-flow: column;
+    grid-area: 2/1/2/2;         /*  startRow/startColumn/endRow/endColumn  */
 }
 
-#setup {
-    grid-area: 2/1/2/5;      /*  startRow/startColumn/endRow/endColumn  */
+#setupInp {
+    grid-area: 2/2/2/3;         /*  startRow/startColumn/endRow/endColumn  */
 }
 
-#punchline {
-    grid-area: 3/1/3/5;      /*  startRow/startColumn/endRow/endColumn  */
+#punchlineLbl {
+    text-align: left;
+
+    grid-area: 3/1/3/2;         /*  startRow/startColumn/endRow/endColumn  */
 }
 
-#button {
-    grid-area: 2/5/4/5;      /*  startRow/startColumn/endRow/endColumn  */
+#punchlineInp {
+    grid-area: 3/2/3/3;         /*  startRow/startColumn/endRow/endColumn  */
 }
 
 button {
-    height: 50px;
-    width: 80px;
+    grid-area: 2/3/4/3;         /*  startRow/startColumn/endRow/endColumn  */
+}
+
+#ourJokes {
+    grid-area: 1/3/4/3;         /*  startRow/startColumn/endRow/endColumn  */
+}
+
+#otherJokes {
+    grid-area: 1/4/4/4;         /*  startRow/startColumn/endRow/endColumn  */
 }
