@@ -11,7 +11,7 @@ exports.getRegistryJokes = (req, res) => {
 //Register jokeservice to jokeRegistry
 exports.postJokeService = (req, res) => {
   //TODO: POST this jokeservice
-   
+
 };
 
 //Delete jokeservice from jokeRegistry

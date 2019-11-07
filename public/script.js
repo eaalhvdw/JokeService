@@ -1,5 +1,5 @@
 const controller = require('../controllers/jokesApiController');
-
+const controller2 = require('../controllers/registryApiController');
 /**
  * I have no idea what's going on in this function,
  * but we are using it in the next function, so I
@@ -25,6 +25,12 @@ async function generateJokesTable(jokes) {
     return compiledTemplate({jokes}); // {jokes: jokes}
 }
 
+/**
+ * This function is generating a table in HTML through jokeServicesList.hbs
+ * to show a list of other jokeservices.
+ * @param jokeServices
+ * @returns {Promise<*>}
+ */
 async function generateJokeserviceTable(jokeServices){
     let temp = await GETtext('/jokeServiceList.hbs');
     let compiledTemp = Handlebars.compile(temp);
@@ -40,7 +46,22 @@ async function generateJokeserviceTable(jokeServices){
 async function main() {
     try {
         let jokes = await controller.getJokes();
-        document.body.innerHTML = await generateJokesTable(jokes);
+
+        let jokesDiv = document.getElementById('ourJokes');
+        let h2 = jokesDiv.firstElementChild;
+        let jokesTable = await generateJokesTable(jokes);
+        jokesTable.parentElement = jokesDiv;
+        document.appendChild(jokesTable);
+        document.body.insertBefore(h2, jokesTable);
+
+        let jokeServices = await controller2.getRegistryJokes();
+        let otherDiv = document.getElementById('otherJokes');
+        let h = otherDiv.firstElementChild;
+        let jokeserviceTable = await generateJokesTable(jokes);
+        jokeserviceTable.parentElement = otherDiv;
+        document.appendChild(jokeserviceTable);
+        document.body.insertBefore(h, jokeserviceTable);
+        document.body.innerHTML = await generateJokeserviceTable(jokeServices);
     } catch (e) {
         console.log(e.name + ": " + e.message);
     }
