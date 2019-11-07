@@ -25,7 +25,7 @@ app.use('/', registryRouter);
 
 // START SERVER
 app.get('/', (req, res) => {
-        // Show own jokes (through force for the second time).
+        // Show own jokes
         const jokes = [
             {setup: 'Where does the king keep his armies?', punchline: 'In his sleeves!'},
             {setup: 'foo', punchline: 'bar'},
@@ -36,8 +36,7 @@ app.get('/', (req, res) => {
     }).listen(8080);
 console.log('Listening on port 8080...');
 
-/*Trying to force the jokes through the server - and failing*/
-/*
+/*Trying to force the jokes through the server - and failing
 app.get('/', (req, res) => {
     try {
         let jokes = controller.getJokes();
@@ -53,6 +52,7 @@ app.get('/', (req, res) => {
     res.sendStatus(404);
 }).listen(8080);
 console.log('Listening on port 8080...');
+*/
 
 /*
 const port = process.env.PORT || config.localPort;
@@ -60,4 +60,4 @@ app.listen(port);
 console.log('Listening on port ' + port + '...');
 */
 
-//module.exports = app; // pga. tests
+module.exports = app; // pga. tests
