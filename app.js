@@ -16,13 +16,22 @@ app.use(morgan('tiny'));
 const mongoose = require('mongoose');
 mongoose.Promise = Promise;
 //TODO: Connect to local database
-//mongoose.connect(config.localMongoDB + '/JokeService2019DB', {useNewUrlParser: true, useUnifiedTopology: true});
+mongoose.connect(config.localMongoDB + '/JokeService19DB', {useNewUrlParser: true, useUnifiedTopology: true});
+
+//MIDDLEWARE
+async function GET(url) {
+    const OK = 200;
+    let response = await fetch(url);
+    if (response.status !== OK)
+        throw new Error('GET status code ' + response.status);
+    return await response.json();
+}
 
 // ROUTES FOR THE APP
 //const jokeRouter = require('./routes/jokesApi');
-const registryRouter = require('./routes/registryApi');
+//const registryRouter = require('./routes/registryApi');
 //app.use('/', jokeRouter);
-app.use('/', registryRouter);
+//app.use('/', registryRouter);
 
 // START SERVER
 app.get('/api/jokes', async (request, response) => {
@@ -34,6 +43,19 @@ app.get('/api/jokes', async (request, response) => {
             response.sendStatus(error.message);
         else {
             response.send('app.js:36 - ' + error.name + ': ' + error.message);
+        }
+    }
+}).get('/api/othersites', async (request, response) => {
+    try {
+        const url = 'https://krdo-joke-registry.herokuapp.com/api/services';
+
+        let jokeServices = await GET(url);
+        response.send(jokeServices);
+    } catch(error) {
+        if (typeof error.message === 'number')
+            response.sendStatus(error.message);
+        else {
+            response.send('app.js:58 - ' + error.name + ': ' + error.message);
         }
     }
 }).get('/', (request, response) => {

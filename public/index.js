@@ -1,3 +1,5 @@
+const controller = require('../controllers/jokesApiController');
+
 /**
  * Help method
  * @return {string}
@@ -55,15 +57,16 @@ async function generateJokeserviceTable(jokeServices){
  */
 async function main() {
     try {
-        let jokes = await GET('/api/jokes');
+        //let jokes = await GET('/api/jokes');
+        let jokes = controller.getJokes();
 
         let jokesDiv = document.getElementById('ourJokes');
         let h = jokesDiv.firstElementChild;
         let jokesTable = await generateJokesTable(jokes);
         jokesTable.parentElement = jokesDiv;
         document.appendChild(jokesTable);
-        document.body.insertBefore(h, jokesTable);
-
+        document.body.insertBefore(jokesTable, h);
+/*
         let jokeServices = await GET('/api/jokes');
         let otherDiv = document.getElementById('otherJokes');
         let h2 = otherDiv.firstElementChild;
@@ -72,7 +75,7 @@ async function main() {
         document.appendChild(jokeserviceTable);
         document.body.insertBefore(h2, jokeserviceTable);
         document.body.innerHTML = await generateJokeserviceTable(jokeServices);
-
+*/
     } catch (error) {
         console.error('index.js:77 - ' + error.name + ': ' + error.message);
     }
