@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>JokeService</title>  <!-- Navn på vores joke service -->
+    <link rel="stylesheet" href="style.css">
+    <script src="handlebars-v4.4.3.js"></script>
+    <script src="index.js" defer></script>
+</head>
+<body>
+<h1>Joke Service</h1> <!-- Navn på vores joke service (Ikke besluttet endnu) -->
+<div id="body">
+    <div id="addJoke">
+        <h2>Add joke</h2>
+        <table>
+            <tr>
+                <td class="td">
+                    <label id="setupLbl">Setup</label>
+                </td>
+                <td class="td">
+                    <input id="setupInp" type="text" placeholder="Type setup here">
+                </td>
+            </tr>
+            <tr>
+                <td class="td">
+                    <label id="punchlineLbl">Punchline</label>
+                </td>
+                <td class="td">
+                    <input id="punchlineInp" type="text" placeholder="Type punchline here">
+                </td>
+            </tr>
+            <tr>
+                <td class="td"></td>
+                <td class="td">
+                    <button type="button">Create</button>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div id="ourJokes">
+        <h2 id="jokesHeader">Our jokes</h2>
+        <div id="showJokes">
+            <!-- Table containing jokes (jokes.hbs) -->
+        </div>
+    </div>
+    <div id="otherJokes">
+        <h2>Other jokes</h2>
+        <div id="showOtherServices">
+            <!-- List with links to other joke services (jokeservices.hbs) -->
+        </div>
+    </div>
+</div>
+<!--
+<footer>
+    <p>Copyright &copy; 2019</p>
+</footer>
+-->
+</body>
+</html>

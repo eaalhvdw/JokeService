@@ -1,2 +1,0 @@
-# JokeService
-Obligatorisk mini-projekt

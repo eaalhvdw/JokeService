@@ -1,8 +1,8 @@
 "use strict";
 
-const Joke = require('../models/Joke');
+const Joke = require('../model/Joke');
 
-/**
+ /**
  * Returns a promise that resolves when the joke is created.
  * @param setup
  * @param punchline
@@ -30,13 +30,5 @@ exports.getJoke = function(jokeId) {
  * @returns {Promise<*[]>}
  */
 exports.getJokes = function() {
-    //Hardcoded jokes
-    const jokes = [
-        {setup: 'Where does the king keep his armies?', punchline: 'In his sleeves!'},
-        {setup: 'foo', punchline: 'bar'},
-        {setup: 'a', punchline: 'b'},
-        {setup: '&&', punchline: '||'}
-    ];
-    return Promise.resolve(jokes);
-    //return Joke.find().exec();
+    return Joke.find().exec();
 };
