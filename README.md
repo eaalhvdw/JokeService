@@ -5,8 +5,8 @@ Lavet i samarbejde med en klassekammerat.
 
 JavaScript, HTML og CSS
 
-Deployed with Heroku
+Idriftsat på Heroku
 
-Database at mlab
+Database på mlab
 
-OBS! Project not completed.
+OBS! Projektet er ikke fuldendt.
